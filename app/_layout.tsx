@@ -3,12 +3,12 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { Slot, router } from "expo-router";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -16,22 +16,39 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
+    // Make sure the user is authenticated before trying to navigate
+    const userLoggedIn = false; // Change this to true to simulate logged-in state
+    if (loaded && !userLoggedIn) {
+      router.replace("/login"); // Navigate only after layout is loaded
+    }
+
+    // Hide splash screen when fonts are loaded
     if (loaded) {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return null; // Ensure layout doesn't render before fonts are loaded
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Slot />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen name="notification"
+        options={{
+          headerShown: true, // Enable header for this screen
+          headerTitle: "Notifications",
+          headerStyle: { backgroundColor: "#FBCFCD" }, // Optional styling
+          headerTintColor: "white", // Back button and title color
+          headerBackTitle: "Back", // Text next to the back button
+        }} />
+
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
