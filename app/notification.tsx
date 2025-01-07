@@ -1,10 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
+import Greet from "@/components/Greet";
 
 export default function Notification() {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
       <Text style={styles.text}>No notification yet</Text>
+      <Greet name="John" />
       </View>
     </View>
   );
