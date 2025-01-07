@@ -48,6 +48,14 @@ export default function RootLayout() {
           headerTintColor: "white", // Back button and title color
           headerBackTitle: "Back", // Text next to the back button
         }} />
+        <Stack.Screen name="restaurant"
+        options={{
+          headerShown: true, // Enable header for this screen
+          headerTitle: "Restaurant",
+          headerStyle: { backgroundColor: "#FBCFCD" }, // Optional styling
+          headerTintColor: "white", // Back button and title color
+          headerBackTitle: "Back", // Text next to the back button
+        }} />
 
       </Stack>
       <StatusBar style="auto" />

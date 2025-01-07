@@ -1,17 +1,15 @@
 import {
   Image,
   StyleSheet,
-  Platform,
   View,
   FlatList,
   TouchableOpacity,
 } from "react-native";
 
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { Text, ImageBackground } from "react-native";
+import { router } from "expo-router";
+import { useRouter } from "expo-router";
+
 
 const PlaceholderImage = require("@/assets/images/promotion.png");
 const Foodimg = require("@/assets/images/burger.png");
@@ -39,7 +37,7 @@ export default function HomeScreen() {
           marginTop: 15,
         }}
       >
-        <Text style={{ fontWeight: "600" }}>Promotions</Text>
+        <Text  className="font-extrabold">Promotions</Text>
       </View>
       <FlatList
         data={data}
@@ -91,7 +89,8 @@ export default function HomeScreen() {
                       height: 140,
                       borderRadius: 20,
                     }}
-                  >             
+                    onPress={() => router.push({ pathname: "/restaurant", params: { name: item.name } })}
+                    >             
                     <ImageBackground
                       source={PlaceholderImage}
                       style={{
@@ -110,8 +109,6 @@ export default function HomeScreen() {
                       <Text className="text-white text-2xl font-bold">{item.name}</Text>
                       <Text className="text-white">promotion available here</Text>
                     </View>
-
-                    {/* <Text style={{color:"black"}}>{item.name}</Text> */}
                   </TouchableOpacity>
                 );
               }}
@@ -127,7 +124,7 @@ export default function HomeScreen() {
                 marginTop: 15,
               }}
             >
-              <Text style={{ fontWeight: "600" }}>Popular</Text>
+              <Text className="font-extrabold">Popular</Text>
             </View>
           </View>
         )}
