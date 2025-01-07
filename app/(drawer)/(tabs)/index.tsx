@@ -14,6 +14,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { Text, ImageBackground } from "react-native";
 
 const PlaceholderImage = require("@/assets/images/promotion.png");
+const Foodimg = require("@/assets/images/burger.png");
 
 const data = [
   { name: "ann" },
@@ -49,29 +50,21 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-                backgroundColor: "pink",
-                flex: 1,
-                height: 200,
-                borderRadius: 20,
-                marginHorizontal: 20, // Adds left and right space
-              }}
-            >
-              <Text style={{ color: "black", flex: 1, marginLeft: 10 }}>
-                {item.name}
-              </Text>
-              {/* Text on the left */}
-              <Image
-                source={PlaceholderImage}
-                style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity className="flex-row items-center justify-center 
+             rounded-2xl mx-5 border border-gray-300 bg-white shadow"
+              style={{ height: 150,}}>
+                <Text className="text-black self-start mt-10 text-xl font-bold	" style={{ color: "black", flex: 1, marginLeft: 40 }}>
+                  {item.name}
+                </Text>
+                {/* Text on the left */}
+                <Image
+                  source={Foodimg}
+                  style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </View>
           );
         }}
         ListHeaderComponentStyle={{ marginVertical: 10 }}
@@ -98,13 +91,7 @@ export default function HomeScreen() {
                       height: 140,
                       borderRadius: 20,
                     }}
-                  >
-                    {/* <Image
-                    source={PlaceholderImage}
-                    style={styles.image}
-                    resizeMode='contain'
-                /> */}
-
+                  >             
                     <ImageBackground
                       source={PlaceholderImage}
                       style={{
@@ -117,15 +104,13 @@ export default function HomeScreen() {
                         borderRadius: 20, // Adding border radius to the image itself
                       }}
                     />
-                    <View
-                      style={{
-                        flex: 1,
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Text style={{ color: "white" }}>{item.name}</Text>
+                    <View className="flex-1 items-start justify-start" style={{
+                       marginLeft: 40
+                      }}>
+                      <Text className="text-white text-2xl font-bold">{item.name}</Text>
+                      <Text className="text-white">promotion available here</Text>
                     </View>
+
                     {/* <Text style={{color:"black"}}>{item.name}</Text> */}
                   </TouchableOpacity>
                 );
@@ -163,8 +148,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 200, // Set the width of the image
-    height: 340, // Set the height of the image
+    width: 150, // Set the width of the image
+    height: 240, // Set the height of the image
     marginRight: 10, // Add space between image and text
     marginLeft: 0,
     borderRadius: 10,

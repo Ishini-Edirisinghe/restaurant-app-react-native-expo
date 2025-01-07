@@ -2,8 +2,10 @@ import { Text, View, StyleSheet } from "react-native";
 
 export default function AboutScreen() {
   return (
+    
     <View style={styles.container}>
       <View style={styles.subContainer}>
+        
       <Text style={styles.text}>We can upload image,</Text>
       <Text style={styles.text}>add emoji and save it</Text>
       <Text style={styles.text}>through Sticker Smash</Text>

@@ -28,7 +28,7 @@ export default function Login() {
       <Stack.Screen options={{ title: 'Login' }} />
       <ThemedView style={[styles.container, { backgroundColor: 'white' }]}>
         <ThemedText type="title" style={styles.title}>Welcome</ThemedText>
-
+        <Text className=" italic">hi</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your email"
