@@ -27,18 +27,7 @@ const data = [
 export default function HomeScreen() {
   return (
     <View style={{ flex: 1, marginTop: 20 }}>
-      <View
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          paddingHorizontal: 12,
-          marginTop: 15,
-        }}
-      >
-        <Text  className="font-extrabold">Promotions</Text>
-      </View>
+      
       <FlatList
         data={data}
         // numColumns={1}
@@ -49,6 +38,7 @@ export default function HomeScreen() {
         renderItem={({ item }) => {
           return (
             <View>
+              
               <TouchableOpacity className="flex-row items-center justify-center 
              rounded-2xl mx-5 border border-gray-300 bg-white shadow"
               style={{ height: 150,}}>
@@ -62,12 +52,26 @@ export default function HomeScreen() {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
+              
             </View>
+            
           );
         }}
         ListHeaderComponentStyle={{ marginVertical: 10 }}
         ListHeaderComponent={() => (
           <View>
+            <View
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexDirection: "row",
+          paddingHorizontal: 12,
+          marginTop: 15,
+        }}
+      >
+        <Text  className="font-extrabold">Promotions</Text>
+      </View>
             <FlatList
               horizontal={true}
               style={{ paddingVertical: 5 }}
@@ -96,7 +100,7 @@ export default function HomeScreen() {
                       style={{
                         height: 140,
                         width: 300,
-                        opacity: 0.6,
+                        opacity: 0.8,
                         position: "absolute",
                       }}
                       imageStyle={{
@@ -126,6 +130,7 @@ export default function HomeScreen() {
             >
               <Text className="font-extrabold">Popular</Text>
             </View>
+            
           </View>
         )}
       />
