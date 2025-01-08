@@ -44,16 +44,16 @@ export default function RootLayout() {
         options={{
           headerShown: true, // Enable header for this screen
           headerTitle: "Notifications",
-          headerStyle: { backgroundColor: "#FBCFCD" }, // Optional styling
-          headerTintColor: "white", // Back button and title color
+          // headerStyle: { backgroundColor: "#FBCFCD" }, // Optional styling
+          headerTintColor: "black", // Back button and title color
           headerBackTitle: "Back", // Text next to the back button
         }} />
         <Stack.Screen name="restaurant"
         options={{
           headerShown: true, // Enable header for this screen
           headerTitle: "Restaurant",
-          headerStyle: { backgroundColor: "#FBCFCD" }, // Optional styling
-          headerTintColor: "white", // Back button and title color
+          // headerStyle: { backgroundColor: "#FBCFCD" }, // Optional styling
+          headerTintColor: "black", // Back button and title color
           headerBackTitle: "Back", // Text next to the back button
         }} />
 
