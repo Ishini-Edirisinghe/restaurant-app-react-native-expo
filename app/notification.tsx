@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 import Greet from "@/components/Greet";
+import Counter from "@/components/Statepractice";
 
 export default function Notification() {
   return (
@@ -8,6 +9,8 @@ export default function Notification() {
       <Text style={styles.text}>No notification yet</Text>
       <Greet name="John" />
       </View>
+      <Counter />
+
     </View>
   );
 }
