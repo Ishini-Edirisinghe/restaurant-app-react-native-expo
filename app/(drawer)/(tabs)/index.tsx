@@ -4,11 +4,13 @@ import {
   View,
   FlatList,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 
 import { Text, ImageBackground } from "react-native";
 import { router } from "expo-router";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 
 
 const PlaceholderImage = require("@/assets/images/promotion.png");
@@ -25,6 +27,8 @@ const data = [
 ];
 
 export default function HomeScreen() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={{ flex: 1, marginTop: 20 }}>
       
@@ -41,7 +45,9 @@ export default function HomeScreen() {
               
               <TouchableOpacity className="flex-row items-center justify-center 
              rounded-2xl mx-5 border border-gray-300 bg-white shadow"
-              style={{ height: 150,}}>
+              style={{ height: 150,}}
+              onPress={() => setModalVisible(true)} // Open modal on press
+              >
                 <Text className="text-black self-start mt-10 text-xl font-bold	" style={{ color: "black", flex: 1, marginLeft: 40 }}>
                   {item.name}
                 </Text>
@@ -134,6 +140,25 @@ export default function HomeScreen() {
           </View>
         )}
       />
+       {/* Modal */}
+       <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)} // Close modal on back button press (Android)
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>This is a modal!</Text>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)} // Close modal on button press
+            >
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -156,5 +181,33 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     borderRadius: 10,
     // Optional: for rounded corners
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  closeButton: {
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: '#2196F3',
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
