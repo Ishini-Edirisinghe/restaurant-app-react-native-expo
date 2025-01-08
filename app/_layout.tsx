@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 import '../global.css';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Slot, router } from "expo-router";
+import { PracticeProvider } from '@/Global/PracticeContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,7 +37,9 @@ export default function RootLayout() {
   }
 
   return (
+    
     <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
+      <PracticeProvider>
       <Stack screenOptions={{ headerShown: false }}>
         <Slot />
         <Stack.Screen name="+not-found" />
@@ -59,6 +62,8 @@ export default function RootLayout() {
 
       </Stack>
       <StatusBar style="auto" />
+      </PracticeProvider>
     </ThemeProvider>
+    
   );
 }

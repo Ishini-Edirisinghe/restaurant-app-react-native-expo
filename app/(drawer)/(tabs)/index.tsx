@@ -34,7 +34,6 @@ export default function HomeScreen() {
   };
   return (
     <View style={{ flex: 1, marginTop: 20 }}>
-      
       <FlatList
         data={data}
         // numColumns={1}
@@ -45,13 +44,16 @@ export default function HomeScreen() {
         renderItem={({ item }) => {
           return (
             <View>
-              
-              <TouchableOpacity className="flex-row items-center justify-center 
+              <TouchableOpacity
+                className="flex-row items-center justify-center 
              rounded-2xl mx-5 border border-gray-300 bg-white shadow"
-              style={{ height: 150,}}
-              onPress={() => handlePress(item.name)} // Pass item.name to the modal
+                style={{ height: 150 }}
+                onPress={() => handlePress(item.name)} // Pass item.name to the modal
               >
-                <Text className="text-black self-start mt-10 text-xl font-bold	" style={{ color: "black", flex: 1, marginLeft: 40 }}>
+                <Text
+                  className="text-black self-start mt-10 text-xl font-bold	"
+                  style={{ color: "black", flex: 1, marginLeft: 40 }}
+                >
                   {item.name}
                 </Text>
                 {/* Text on the left */}
@@ -61,26 +63,24 @@ export default function HomeScreen() {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
-              
             </View>
-            
           );
         }}
         ListHeaderComponentStyle={{ marginVertical: 10 }}
         ListHeaderComponent={() => (
           <View>
             <View
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          paddingHorizontal: 12,
-          marginTop: 15,
-        }}
-      >
-        <Text  className="font-extrabold">Promotions</Text>
-      </View>
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexDirection: "row",
+                paddingHorizontal: 12,
+                marginTop: 15,
+              }}
+            >
+              <Text className="font-extrabold">Promotions</Text>
+            </View>
             <FlatList
               horizontal={true}
               style={{ paddingVertical: 5 }}
@@ -102,8 +102,13 @@ export default function HomeScreen() {
                       height: 140,
                       borderRadius: 20,
                     }}
-                    onPress={() => router.push({ pathname: "/restaurant", params: { name: item.name } })}
-                    >             
+                    onPress={() =>
+                      router.push({
+                        pathname: "/restaurant",
+                        params: { name: item.name },
+                      })
+                    }
+                  >
                     <ImageBackground
                       source={PlaceholderImage}
                       style={{
@@ -116,11 +121,18 @@ export default function HomeScreen() {
                         borderRadius: 20, // Adding border radius to the image itself
                       }}
                     />
-                    <View className="flex-1 items-start justify-start" style={{
-                       marginLeft: 40
-                      }}>
-                      <Text className="text-white text-2xl font-bold">{item.name}</Text>
-                      <Text className="text-white">promotion available here</Text>
+                    <View
+                      className="flex-1 items-start justify-start"
+                      style={{
+                        marginLeft: 40,
+                      }}
+                    >
+                      <Text className="text-white text-2xl font-bold">
+                        {item.name}
+                      </Text>
+                      <Text className="text-white">
+                        promotion available here
+                      </Text>
                     </View>
                   </TouchableOpacity>
                 );
@@ -139,28 +151,24 @@ export default function HomeScreen() {
             >
               <Text className="font-extrabold">Popular</Text>
             </View>
-            
           </View>
         )}
       />
-       {/* Modal */}
+      {/* Modal */}
       {/* Modal */}
       <ItemModal
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)} // Close the modal
       >
-        <Text style={{ color: 'black', fontSize: 16, padding: 20 }}>
+        <Text style={{ color: "black", fontSize: 16, padding: 20 }}>
           Selected Item: {selectedItemName}
         </Text>
         <Image
-                  source={Foodimg}
-                  style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image
-                  resizeMode="contain"
-                />
-
+          source={Foodimg}
+          style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image
+          resizeMode="contain"
+        />
       </ItemModal>
-      
-      
     </View>
   );
 }
@@ -186,30 +194,30 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
   },
   modalContent: {
     width: 300,
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
   modalText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
   },
   closeButton: {
     marginTop: 10,
     padding: 10,
-    backgroundColor: '#2196F3',
+    backgroundColor: "#2196F3",
     borderRadius: 5,
   },
   closeButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
   },
 });
