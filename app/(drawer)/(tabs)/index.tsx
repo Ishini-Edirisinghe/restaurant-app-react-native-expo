@@ -26,8 +26,12 @@ const data = [
 
 export default function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedItemName, setSelectedItemName] = useState<string | null>(null);
 
-
+  const handlePress = (name: string) => {
+    setSelectedItemName(name); // Set the selected item's name
+    setModalVisible(true); // Open the modal
+  };
   return (
     <View style={{ flex: 1, marginTop: 20 }}>
       
@@ -45,7 +49,7 @@ export default function HomeScreen() {
               <TouchableOpacity className="flex-row items-center justify-center 
              rounded-2xl mx-5 border border-gray-300 bg-white shadow"
               style={{ height: 150,}}
-              onPress={() => setModalVisible(true)} // Set modal visibility to true
+              onPress={() => handlePress(item.name)} // Pass item.name to the modal
               >
                 <Text className="text-black self-start mt-10 text-xl font-bold	" style={{ color: "black", flex: 1, marginLeft: 40 }}>
                   {item.name}
@@ -145,7 +149,15 @@ export default function HomeScreen() {
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)} // Close the modal
       >
-        <Text style={{ color: '#fff', padding: 20 }}>This is modal content!</Text>
+        <Text style={{ color: 'black', fontSize: 16, padding: 20 }}>
+          Selected Item: {selectedItemName}
+        </Text>
+        <Image
+                  source={Foodimg}
+                  style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image
+                  resizeMode="contain"
+                />
+
       </ItemModal>
       
       
