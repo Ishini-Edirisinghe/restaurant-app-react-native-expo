@@ -1,8 +1,29 @@
 import { Text, View, StyleSheet, Button } from "react-native";
 import { PracticeProvider, PracticeContext } from "@/Global/PracticeContext";
 import { useContext } from "react";
+import Animated, {
+  useSharedValue,
+  withTiming,
+  useAnimatedStyle,
+  Easing,
+} from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AboutScreen() {
+
+  const randomWidth = useSharedValue(10);
+
+  const config = {
+    duration: 500,
+    easing: Easing.bezier(0.5, 0.01, 0, 1),
+  };
+
+  const style = useAnimatedStyle(() => {
+    return {
+      width: withTiming(randomWidth.value, config),
+    };
+  });
+
   const context = useContext(PracticeContext);
 
   if (!context) {
@@ -13,7 +34,7 @@ export default function AboutScreen() {
 
   const { val, setVal, val1, setVal1, val2, setVal2 } = context;
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.subContainer}>
         <Text style={{ fontFamily: 'Inter-Black' }}>{val}</Text>
         <Text style={styles.text}>{val1}</Text>
@@ -27,7 +48,16 @@ export default function AboutScreen() {
           }}
         ></Button>
       </View>
+      <View style={styles.container}>
+      <Animated.View style={[styles.box, style]} />
+      <Button
+        title="toggle"
+        onPress={() => {
+          randomWidth.value = Math.random() * 350;
+        }}
+      />
     </View>
+    </SafeAreaView>
   );
 }
 
@@ -54,5 +84,12 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: "white",
     backgroundColor: "#AA336A",
+  },
+
+  box: {
+    width: 100,
+    height: 80,
+    backgroundColor: 'black',
+    margin: 30,
   },
 });
