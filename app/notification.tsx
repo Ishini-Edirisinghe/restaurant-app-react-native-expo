@@ -3,7 +3,7 @@ import Greet from "@/components/Greet";
 import Counter from "@/components/Statepractice";
 import { PracticeProvider, PracticeContext } from "@/Global/PracticeContext";
 import { useContext } from "react";
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Notification() {
   const context = useContext(PracticeContext);
 
@@ -15,7 +15,8 @@ export default function Notification() {
 
   const { val, setVal, val1, setVal1, val2, setVal2 } = context;
   return (
-    <View style={styles.container}>
+    //SafeAreaView 
+    <SafeAreaView  style={styles.container}>
       <View style={styles.subContainer}>
         <Text style={styles.text}>No notification yet</Text>
         <Greet name="John" />
@@ -34,7 +35,7 @@ export default function Notification() {
         ></Button>
       </View>
       <Counter />
-    </View>
+    </SafeAreaView>
   );
 }
 
