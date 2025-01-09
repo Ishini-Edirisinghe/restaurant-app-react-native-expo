@@ -8,9 +8,9 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-    "image": "./assets/images/order.png",
-    "backgroundColor": "#FEF9B0",
-    "resizeMode": "contain"
+      "image": "./assets/images/order.png",
+      "backgroundColor": "#FEF9B0",
+      "resizeMode": "contain"
     },
     "newArchEnabled": true,
     "ios": {
@@ -28,7 +28,8 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true
