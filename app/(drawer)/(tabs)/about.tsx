@@ -1,16 +1,15 @@
 import { Text, View, StyleSheet, Button } from "react-native";
 import { PracticeProvider, PracticeContext } from "@/Global/PracticeContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Animated, {
   useSharedValue,
   withTiming,
   useAnimatedStyle,
   Easing,
-} from 'react-native-reanimated';
-import { SafeAreaView } from 'react-native-safe-area-context';
+} from "react-native-reanimated";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AboutScreen() {
-
   const randomWidth = useSharedValue(10);
 
   const config = {
@@ -33,10 +32,24 @@ export default function AboutScreen() {
   }
 
   const { val, setVal, val1, setVal1, val2, setVal2 } = context;
+
+  const [message, setMessage] = useState('Tap me!');
+
+  const handleResponderGrant = () => {
+    setMessage('Touch started');
+  };
+
+  const handleResponderMove = () => {
+    setMessage('Finger moved');
+  };
+
+  const handleResponderRelease = () => {
+    setMessage('Touch ended');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.subContainer}>
-        <Text style={{ fontFamily: 'Inter-Black' }}>{val}</Text>
+        <Text style={{ fontFamily: "Inter-Black" }}>{val}</Text>
         <Text style={styles.text}>{val1}</Text>
         <Text style={styles.text}>{val2}</Text>
         <Button
@@ -49,13 +62,22 @@ export default function AboutScreen() {
         ></Button>
       </View>
       <View style={styles.container}>
-      <Animated.View style={[styles.box, style]} />
-      <Button
-        title="toggle"
-        onPress={() => {
-          randomWidth.value = Math.random() * 350;
-        }}
-      />
+        <Animated.View style={[styles.box, style]} />
+        <Button
+          title="toggle"
+          onPress={() => {
+            randomWidth.value = Math.random() * 350;
+          }}
+        />
+      </View>
+      <View
+      style={styles.container}
+      onStartShouldSetResponder={() => true}
+      onResponderGrant={handleResponderGrant}
+      onResponderMove={handleResponderMove}
+      onResponderRelease={handleResponderRelease}
+    >
+      <Text style={styles.text}>{message}</Text>
     </View>
     </SafeAreaView>
   );
@@ -84,12 +106,14 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: "white",
     backgroundColor: "#AA336A",
+    
   },
 
   box: {
+    
     width: 100,
     height: 80,
-    backgroundColor: 'black',
+    backgroundColor: "black",
     margin: 30,
   },
 });
