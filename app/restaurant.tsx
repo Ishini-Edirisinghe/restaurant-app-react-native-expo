@@ -12,11 +12,6 @@ export default function Restaurant() {
       <View style={styles.subContainer}>
         <Text style={styles.text}>Restaurant name: {name}</Text>
       </View>
-      <Image
-          source={Foodimg}
-          style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image
-          resizeMode="contain"
-        />
           <Image
           source={{ uri: 'https://plus.unsplash.com/premium_photo-1672363353897-ae5a81a1ab57?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8' }}
           style={[styles.image, { marginLeft: 10 }]} // Adds space between text and image

@@ -15,7 +15,7 @@ export default function AboutScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        <Text style={styles.text}>{val}</Text>
+        <Text style={{ fontFamily: 'Inter-Black' }}>{val}</Text>
         <Text style={styles.text}>{val1}</Text>
         <Text style={styles.text}>{val2}</Text>
         <Button
