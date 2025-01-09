@@ -1,6 +1,6 @@
 import {
   StyleSheet,
-  TouchableOpacity,
+  TouchableHighlight,
   Text,
   View,
 } from "react-native";
@@ -10,12 +10,12 @@ import { router } from "expo-router";
 export default function TabTwoScreen() {
   return (
     <View className="flex-1 items-center justify-center">
-      <TouchableOpacity className=""
+      <TouchableHighlight underlayColor="yellow"className=""
         style={styles.button}
         onPress={() => router.push("/login")}
       >
         <Text style={styles.buttonText}>Logout</Text>
-      </TouchableOpacity>
+      </TouchableHighlight>
     </View>
   );
 }
