@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from "react-native";
-
+import CharacterList from "@/components/CharacterList";
 import { router } from "expo-router";
 
 export default function TabTwoScreen() {
@@ -16,6 +16,7 @@ export default function TabTwoScreen() {
       >
         <Text style={styles.buttonText}>Logout</Text>
       </TouchableHighlight>
+      <CharacterList/>
     </View>
   );
 }
