@@ -11,7 +11,7 @@ const CharacterList = () => {
       try {
         const response = await fetch('https://api.api-onepiece.com/v2/characters/en');
         const data = await response.json();
-        setCharacters(data); // Assuming the API returns an array
+        setCharacters(data.slice(0, 20)); // Assuming the API returns an array
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -32,6 +32,7 @@ const CharacterList = () => {
 
   return (
     <View style={styles.container}>
+      <Text className='text-2xl font-extrabold'>One Piece Characters from API</Text>  
       <FlatList
         data={characters}
         keyExtractor={(item:any) => item.id.toString()}
